@@ -25,7 +25,7 @@ var timeLimit = 31000; // 30 sec = 1000*10
 // setup canvas
 function setup() {
     var myCanvas = createCanvas(800, 250);
-    myCanvas.parent('#mySketch');
+    myCanvas.parent("#mySketch");
     textSize(14);
     updateCircle(); // update circle location
 }
@@ -84,11 +84,11 @@ function updateCircle() {
 // update score
 function updateMenu() {
     fill(125);
-    text('Score: ' + score, 20, 30); // place score
-    text('Missed: ' + missed, 100, 30);
+    text("Score: " + score, 20, 30); // place score
+    text("Missed: " + missed, 100, 30);
     fill(0);
     if(paused) {
-        var t = 'PLAY';
+        var t = "PLAY";
     } else {
         var currTime = millis();
         var t = timeLimit - (currTime - startTime);
@@ -96,7 +96,7 @@ function updateMenu() {
         if(t == 0) {
             paused = !paused;
         }
-        t += ' sec';
+        t += " sec";
     }
     tx = width - (textWidth(t) + 15);
     text(t, width - (textWidth(t) + 30), 30);
