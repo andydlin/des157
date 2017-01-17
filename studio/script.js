@@ -20,7 +20,7 @@ var statusTime = 0;
 var tx = 0;
 // coundown timer
 var startTime = 0;
-var timeLimit = 10000; // 30 sec = 1000*10
+var timeLimit = 31000; // 30 sec = 1000*10
 
 // setup canvas
 function setup() {
