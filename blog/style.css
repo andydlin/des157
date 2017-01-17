@@ -83,13 +83,21 @@ a:hover:after {
     width: 800px;
 }
 
-h1 {
-    font-size: 20px;
-    font-weight: 900;
-    margin-bottom: 15px;
+#logo {
+    margin-bottom: 25px;
 }
 
-h1 span {
+#logo img {
+    float: right;
+}
+
+#logo h1 {
+    font-size: 20px;
+    font-weight: 900;
+    padding-top: 6px;
+}
+
+#logo h1 span {
     display: block;
     font-size: 12px;
     font-weight: 400;
