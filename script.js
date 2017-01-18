@@ -59,12 +59,14 @@ function draw() {
 // when mouse is pressed
 function mousePressed() {
     if(onText()) {
-        paused = !paused;
-        startTime = millis(); // set start time after user clicks 'play'
-        time = millis(); // store current time
-        score = 0; // reset values
-        missed = 0;
-        updateMenu();
+        if(paused) {
+            paused = !paused;
+            startTime = millis(); // set start time after user clicks 'play'
+            time = millis(); // store current time
+            score = 0; // reset values
+            missed = 0;
+            updateMenu();
+        }
     }
     if(!paused) {
         if(onCircle()) {
