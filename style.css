@@ -138,3 +138,28 @@ footer a {
 footer a:last-child {
     margin-right: 0px;
 }
+
+/*
+-- Topic Brainstorm --
+*/
+#topicBrainstorm {
+    padding: 30px 0px;
+}
+
+#topicBrainstorm h1 {
+    margin-bottom: 20px;
+}
+
+#topicBrainstorm ol,
+#topicBrainstorm ol li {
+    list-style: decimal outside none;
+}
+
+#topicBrainstorm li {
+    display: list-item;
+    margin: 0 0 15px 15px;
+}
+
+#topicBrainstorm h2 {
+    font-size: 14px;
+}
