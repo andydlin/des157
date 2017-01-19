@@ -78,8 +78,8 @@ function mousePressed() {
 
 // randomize circle location, range is determined by radius of circle and canvas size
 function updateCircle() {
-    circleX = random(25, 750);
-    circleY = random(25, 200);
+    circleX = random(25, 775);
+    circleY = random(25, 220);
     time = millis(); // update time for new circle
 }
 
