@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>DES157 - Chapter 3: Minimum</title>
+    <title>DES157 - Returning the Minimum Value</title>
     <style>
         * {
             margin: 0px;
@@ -30,16 +30,35 @@
             margin-bottom: 24px;
         }
 
-        h2 {
-            font-weight: 400;
+        p {
+            margin-bottom: 20px;
+        }
+
+        #min {
+            display: block;
+            font-style: italic;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
     <h1>Chapter 3: Minimum</h1>
-    <h2>Please open the console to see the results of the script.</h2>
+    <div>
+        <p>Enter 2 numbers below, the function will return the minimum between the 2 numbers.</p>
+        <input id="num1" placeholder="Enter a number" type="number">
+        <input id="num2" placeholder="Enter a number" type="number">
+        <button type="button">GET MINIMUM</button>
+        <span id="min"></span>
+    </div>
     <script>
-        console.log(min(6,3)); // log "min" function
+        var button = document.querySelector("button"); // store button variable
+        var val1, val2, min; // initiate values
+        button.addEventListener("click", function() { // on click for button
+            val1 = document.querySelector("#num1").value; // value of first number
+            val2 = document.querySelector("#num2").value; // value of second number
+            min = min(val1, val2); // call min function
+            document.querySelector("#min").innerHTML = "<strong>" + min + "</strong> is the minimum between the 2 numbers."; // set HTML text
+        });
 
         function min(a,b) { // "min" function that accepts 2 values: a, b
             if (a < b) { // if a is less than b, return a
