@@ -34,6 +34,7 @@
         }
 
         .circle {
+            animation: pulse 1s ease 0s infinite normal;
             background: #ffffff;
             height: 8px;
             width: 8px;
@@ -55,6 +56,21 @@
             height: 0px;
             width: 0px;
             position: absolute;
+        }
+
+        .square, .triangle {
+            animation: spin 0.5s linear 0s infinite normal; /* animation name | duration | timing | delay | iterations | direction  */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            25% { transform: scale(2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
