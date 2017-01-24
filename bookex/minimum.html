@@ -45,20 +45,25 @@
     <h1>Chapter 3: Minimum</h1>
     <div>
         <p>Enter 2 numbers below, the function will return the minimum between the 2 numbers.</p>
-        <input id="num1" placeholder="Enter a number" type="number">
-        <input id="num2" placeholder="Enter a number" type="number">
-        <button id="submit" type="button">GET MINIMUM</button>
+        <form name="f">
+            <input name="num1" placeholder="Enter a number" type="number">
+            <input name="num2" placeholder="Enter a number" type="number">
+            <button type="submit">GET MINIMUM</button>
+        </form>
         <span id="min"></span>
     </div>
     <script>
-        var button = document.getElementById("submit"); // store button variable
-        var val1, val2, val3; // initiate values
-        button.addEventListener("click", function() { // on click for button
-            val1 = parseInt(document.getElementById("num1").value); // value of first number, parse to integer cause value retrieved is string
-            val2 = parseInt(document.getElementById("num2").value); // value of second number
+        document.f.onsubmit = processForm; // set form to function
+
+        function processForm() {
+            var val1, val2, val3; // initiate values
+            val1 = parseInt(document.f.num1.value); // value of first number, parse to integer cause value retrieved is string
+            val2 = parseInt(document.f.num2.value); // value of second number
             val3 = min(val1, val2); // call min function
             document.getElementById("min").innerHTML = "<strong>" + val3 + "</strong> is the minimum between the 2 numbers."; // set HTML text
-        });
+
+            return false; // prevent page reload
+        }
 
         function min(a,b) { // "min" function that accepts 2 values: a, b
             if (a < b) { // if a is less than b, return a
