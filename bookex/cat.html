@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DES157 - Chapter 13: Cat's Hat</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px
+        }
+
+        body {
+            background-color: #7B6ED6;
+            color: white;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-weight: 400;
+        }
+
+        div {
+            margin: 0 auto;
+            position: relative;
+            width: 300px;
+        }
+
+        #cat,
+        #hat {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chapter 13: Cat's Hat</h1>
+    <div>
+        <img src="hat.png" alt="Hat" id="hat" height="71" width="150">
+        <img src="kitten.png" alt="Kitten" id="cat" height="120" width="300">
+    </div>
+    <script>
+        var cat = document.querySelector("#cat"); // select #cat
+        var hat = document.querySelector("#hat"); // select #hat
+        var angle = 0, lastTime = null; // initial variables for angle and lastTime
+
+        function animate(time) { // animate function with current time variable
+            if(lastTime != null) { // if lastTime is not empty, set the angle to current time minus lastTime
+                angle += (time - lastTime) * 0.001
+            }
+            lastTime = time; // set lastTime to current time to be used in next loop
+            cat.style.top = (Math.sin(angle) * 10) + "px"; // set Y position
+            cat.style.left = (Math.cos(angle) *  10) + "px"; // set X position
+            var hatAngle = angle + Math.PI; // add pi to put the hat half a circle ahead of the cat
+            hat.style.top = (Math.sin(hatAngle) * 200) + "px"; // set Y position
+            hat.style.left = (Math.cos(hatAngle) *  200) + "px"; // set X position
+            requestAnimationFrame(animate); // tell browser to repaint the screen when ready
+        }
+
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>

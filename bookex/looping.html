@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DES157 - Chapter 2: Looping Exercise</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px
+        }
+
+        body {
+            background-color: #FF7474;
+            color: white;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chapter 2: Looping</h1>
+    <h2>Please open the console to see the results of the script.</h2>
+    <script>
+        var string = ""; // set string variable
+        for(var i = 1; i < 8; i++) { // 7 loops for 7 lines of "#""
+            string = ""; // clear string variable
+            for(var j = 1; j < i+1; j++) { // loop depends on what "i" is
+                string += "#"; // concatenate string with "#" until
+            }
+            console.log(string); // log string variable
+        }
+    </script>
+</body>
+</html>

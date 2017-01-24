@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DES157 - Chapter 14: Mouse Trail</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px
+        }
+
+        body {
+            background-color: #259073;
+            color: white;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 36px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        h2 {
+            font-weight: 400;
+        }
+
+        .circle {
+            background: #ffffff;
+            height: 8px;
+            width: 8px;
+            border-radius: 4px;
+            position: absolute;
+        }
+
+        .square {
+            background: #ffffff;
+            height: 8px;
+            width: 8px;
+            position: absolute;
+        }
+
+        .triangle {
+            border-bottom: 8px solid #ffffff;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            height: 0px;
+            width: 0px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chapter 14: Mouse Trail</h1>
+    <script>
+        var elements = []; // initiate array for dom objects
+        var classes = ["circle", "square", "triangle"]; // array for class names
+        var current = 0; // used to loop through dots array
+        var max = 20; // set max elements
+
+        for(var i = 0; i < max; i++) { // for loop to create elements and push into array
+            var e = document.createElement("div");
+            var c = Math.floor(Math.random() * classes.length); // Math.random() generates # between [0, 1), multiple that by length of array, Math.floor() returns larget number and removes decimal points, randomizes index for the arrow
+            e.className = classes[c]; // set class name to random index generated above
+            elements.push(e); // push to array
+        }
+
+        addEventListener("mousemove", function(event) {
+            var elem = elements[current]; // set current element to append to dom
+            elem.style.left = (event.pageX - 4) + "px"; // set X location
+            elem.style.top = (event.pageY - 4) + "px"; // set Y location
+            document.body.appendChild(elem); // append element to dom
+            if(current < (max - 1)) { // if not end of array, keep going
+                current += 1;
+            } else { // end of array, reset to 0
+                current = 0;
+            }
+        });
+    </script>
+</body>
+</html>
