@@ -39,13 +39,10 @@
     <h1>Chapter 2: Looping</h1>
     <h2>Please open the console to see the results of the script.</h2>
     <script>
-        var string = ""; // set string variable
-        for(var i = 1; i < 8; i++) { // 7 loops for 7 lines of "#""
-            string = ""; // clear string variable
-            for(var j = 1; j < i+1; j++) { // loop depends on what "i" is
-                string += "#"; // concatenate string with "#" until
-            }
+        var string = "#"; // set string variable
+        for(var i = 0; i < 7; i++) { // 7 loops for 7 lines of "#""
             console.log(string); // log string variable
+            string += "#"; // add # to string
         }
     </script>
 </body>

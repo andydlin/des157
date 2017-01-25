@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+
+.wrapper {
+    margin: 100px auto;
+    width: 1000px;
+}
