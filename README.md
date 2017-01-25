@@ -1,3 +1,3 @@
-# Student Template for DES157
+# Andy Lin's Portal
 
-Begin by forking this repository to your personal GitHub account (click Fork in the upper right)
+My portal for DES 157, Winter 2017 with Glenda Drew.
