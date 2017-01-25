@@ -44,6 +44,10 @@
         #hat {
             position: absolute;
         }
+
+        #hat {
+            transform: translateX(70px);
+        }
     </style>
 </head>
 <body>
@@ -59,12 +63,12 @@
 
         function animate(time) { // animate function with current time variable
             if(lastTime != null) { // if lastTime is not empty, set the angle to current time minus lastTime
-                angle += (time - lastTime) * 0.001
+                angle += (time - lastTime) * 0.001 // reduce angle to speed
             }
             lastTime = time; // set lastTime to current time to be used in next loop
             cat.style.top = (Math.sin(angle) * 10) + "px"; // set Y position
             cat.style.left = (Math.cos(angle) *  10) + "px"; // set X position
-            var hatAngle = angle + Math.PI; // add pi to put the hat half a circle ahead of the cat
+            var hatAngle = angle + Math.PI; // add pi to start half a circle earlier
             hat.style.top = (Math.sin(hatAngle) * 200) + "px"; // set Y position
             hat.style.left = (Math.cos(hatAngle) *  200) + "px"; // set X position
             requestAnimationFrame(animate); // tell browser to repaint the screen when ready
