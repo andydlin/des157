@@ -80,7 +80,6 @@ function processGiphy(json) {
 
         if(i == size-1) {
             displayImages(); // call displayImages() after loop is done
-            console.log(images);
         }
     }
 }
