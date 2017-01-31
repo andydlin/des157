@@ -19,8 +19,6 @@ getGiphy("http://api.giphy.com/v1/gifs/search?q=90s&limit=50&api_key=dc6zaTOxFJm
 // process the form on submit
 function processForm(e) {
     e.preventDefault(); // prevent form submit
-    images.length = 0; // reset images array
-    document.getElementById('images').innerHTML = ""; // clear giphy images
     var inputs = document.getElementsByTagName('input');
     completed = 0; // reset completed count
 
@@ -32,6 +30,8 @@ function processForm(e) {
     }
 
     if(completed == 9) { // if all inputs are filled up
+        document.getElementById('images').innerHTML = ""; // clear giphy images
+        images.length = 0; // reset images array
         for(var i = 0; i < inputs.length; i++) {
             // replace placeholders with values, RegExp replaces all instances of [string] wheresas .replace only replaces first instance
             html = html.replace(new RegExp('v' + (i+1), 'g'), '<span>' + values[i] + '</span>');
