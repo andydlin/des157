@@ -15,6 +15,10 @@ h1 {
     line-height: 36px;
 }
 
+h2 {
+    display: none;
+}
+
 p {
     line-height: 21px;
 }
