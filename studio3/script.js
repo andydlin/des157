@@ -1,7 +1,8 @@
-var wrapper, collection, collectionImages, image, box, alt, character, fullFigure, boxLid;
+var wrapper, collection, collectionImages, image, box, alt, character, fullFigure, boxLid; // initialize global variables
 
-var characters = ['arrow', 'deadpool', 'flash', 'groot', 'ironman'];
+var characters = ['arrow', 'deadpool', 'flash', 'groot', 'ironman']; // array of different characters
 
+// preload images for all the characters
 window.addEventListener('load', function() {
     for(var j = 0; j < characters.length; j++) {
         for(var i = 1; i < 25; i++) {
@@ -13,6 +14,7 @@ window.addEventListener('load', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // assign DOM elements to variables
     wrapper = document.getElementById('figureWrapper');
     boxWrapper = document.getElementById('boxWrapper');
     collection = document.getElementById('collection');
@@ -100,16 +102,18 @@ document.addEventListener('DOMContentLoaded', function() {
             var activeC = image.getAttribute('data-character');
             var isFigureActive = wrapper.getAttribute('class');
             var isBoxActive = boxWrapper.getAttribute('class');
+
+            alt = this.getAttribute('alt');
+            var boxLink = 'images/' + character + '/box-' + character + '.png';
+            var figureLink = 'images/' + character + '/full-' + character + '.png';
+            var lidLink = 'images/' + character + '/lid-' + character + '.jpg';
+
+            resetClasses();
+            collection.setAttribute('class', 'visible active');
+            this.setAttribute('class', 'active');
+
             if(isFigureActive == 'visible') {
                 if(activeC != character) {
-                    resetClasses();
-                    collection.setAttribute('class', 'visible active');
-                    this.setAttribute('class', 'active');
-                    alt = this.getAttribute('alt');
-                    var boxLink = 'images/' + character + '/box-' + character + '.png';
-                    var figureLink = 'images/' + character + '/full-' + character + '.png';
-                    var lidLink = 'images/' + character + '/lid-' + character + '.jpg';
-
                     fullFigureWrapper.setAttribute('class', 'visible');
                     image.setAttribute('class', '');
                     setTimeout(function() {
@@ -124,13 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }, 300);
 
                         setTimeout(function() {
-                            box.setAttribute('alt', alt);
-                            box.setAttribute('src', boxLink);
-                            fullFigure.setAttribute('alt', alt);
-                            fullFigure.setAttribute('src', figureLink);
-                            boxLid.setAttribute('alt', alt);
-                            boxLid.setAttribute('src', lidLink);
-                            boxWrapper.setAttribute('class', 'visible');
+                            animateBox(alt, boxLink, figureLink, lidLink)
                             setTimeout(function() {
                                 box.setAttribute('class', 'visible');
                                 fullFigureWrapper.setAttribute('class', 'visible');
@@ -139,14 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 800);
                 }
             } else {
-                resetClasses();
-                collection.setAttribute('class', 'visible active');
-                this.setAttribute('class', 'active');
                 document.getElementsByTagName('main')[0].setAttribute('class', 'hidden');
-                alt = this.getAttribute('alt');
-                var boxLink = 'images/' + character + '/box-' + character + '.png';
-                var figureLink = 'images/' + character + '/full-' + character + '.png';
-                var lidLink = 'images/' + character + '/lid-' + character + '.jpg';
+
                 if(isBoxActive) {
                     setTimeout(function() {
                         fullFigureWrapper.setAttribute('class', '');
@@ -157,26 +149,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 300);
 
                     setTimeout(function() {
-                        box.setAttribute('alt', alt);
-                        box.setAttribute('src', boxLink);
-                        fullFigure.setAttribute('alt', alt);
-                        fullFigure.setAttribute('src', figureLink);
-                        boxLid.setAttribute('alt', alt);
-                        boxLid.setAttribute('src', lidLink);
-                        boxWrapper.setAttribute('class', 'visible');
+                        animateBox(alt, boxLink, figureLink, lidLink)
                         setTimeout(function() {
                             box.setAttribute('class', 'visible');
                             fullFigureWrapper.setAttribute('class', 'visible');
                         }, 300);
                     }, 300);
                 } else {
-                    box.setAttribute('alt', alt);
-                    box.setAttribute('src', boxLink);
-                    fullFigure.setAttribute('alt', alt);
-                    fullFigure.setAttribute('src', figureLink);
-                    boxLid.setAttribute('alt', alt);
-                    boxLid.setAttribute('src', lidLink);
-                    boxWrapper.setAttribute('class', 'visible');
+                    animateBox(alt, boxLink, figureLink, lidLink)
                     setTimeout(function() {
                         box.setAttribute('class', 'visible');
                         fullFigureWrapper.setAttribute('class', 'visible');
@@ -186,6 +166,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// animate box into screen
+function animateBox(alt, boxLink, figureLink, lidLink) {
+    box.setAttribute('alt', alt);
+    box.setAttribute('src', boxLink);
+    fullFigure.setAttribute('alt', alt);
+    fullFigure.setAttribute('src', figureLink);
+    boxLid.setAttribute('alt', alt);
+    boxLid.setAttribute('src', lidLink);
+    boxWrapper.setAttribute('class', 'visible');
+}
 
 function resetClasses() {
     for(var i = 0; i < collectionImages.length; i++) {
