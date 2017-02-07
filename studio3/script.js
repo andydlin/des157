@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     calcWidth();
 
-    wrapper.addEventListener('mousedown', function() {
+    wrapper.addEventListener('mousedown', function(event) {
         isMouseDown = true;
         initX = event.clientX; // store initial X coord of mouse on click
         current = image.getAttribute('data-current');
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         isMouseDown = false;
     });
 
-    document.addEventListener('mousemove', function() {
+    document.addEventListener('mousemove', function(event) {
         if(isMouseDown) {
             var mouseX = event.clientX;
             if((mouseX - initX) > min || (mouseX - initX) < (min*-1)) {
