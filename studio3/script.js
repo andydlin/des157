@@ -1,5 +1,17 @@
 var wrapper, collection, collectionImages, image, box, alt, character, fullFigure, boxLid;
 
+var characters = ['arrow', 'deadpool', 'flash', 'groot', 'ironman'];
+
+window.addEventListener('load', function() {
+    for(var j = 0; j < characters.length; j++) {
+        for(var i = 1; i < 25; i++) {
+            var src = 'images/' + characters[j] + '/' + characters[j] + '-' + i + '.jpg';
+            var img = document.createElement('img');
+            img.src = src;
+        }
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     wrapper = document.getElementById('figureWrapper');
     boxWrapper = document.getElementById('boxWrapper');
