@@ -78,7 +78,6 @@ main.visible {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
 }
 
 #collection.delayed img:nth-child(1) {
@@ -168,7 +167,6 @@ main.visible {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
     width: 100%;
     z-index: 3;
 }
@@ -187,7 +185,6 @@ main.visible {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
     z-index: 2;
 }
 
