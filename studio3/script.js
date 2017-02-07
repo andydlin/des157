@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for(var i = 0; i < collectionImages.length; i++) {
         collectionImages[i].addEventListener('click', function() {
             character = this.getAttribute('data-character');
-            var activeC = image.getAttribute('character');
+            var activeC = image.getAttribute('data-character');
             var isFigureActive = wrapper.getAttribute('class');
             var isBoxActive = boxWrapper.getAttribute('class');
             if(isFigureActive == 'visible') {
