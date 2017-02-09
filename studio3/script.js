@@ -119,44 +119,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(function() {
                         wrapper.setAttribute('class', '');
 
-                        setTimeout(function() {
-                            fullFigureWrapper.setAttribute('class', '');
-                        }, 100);
-
-                        setTimeout(function() {
-                            boxWrapper.setAttribute('class', '');
-                        }, 300);
-
-                        setTimeout(function() {
-                            animateBox(alt, boxLink, figureLink, lidLink)
-                            setTimeout(function() {
-                                box.setAttribute('class', 'visible');
-                                fullFigureWrapper.setAttribute('class', 'visible');
-                            }, 300);
-                        }, 300);
+                        hideShowBox(alt, boxLink, figureLink, lidLink, character);
                     }, 800);
                 }
             } else {
                 document.getElementsByTagName('main')[0].setAttribute('class', 'hidden');
-
                 if(isBoxActive) {
-                    setTimeout(function() {
-                        fullFigureWrapper.setAttribute('class', '');
-                    }, 100);
-
-                    setTimeout(function() {
-                        boxWrapper.setAttribute('class', '');
-                    }, 300);
-
-                    setTimeout(function() {
-                        animateBox(alt, boxLink, figureLink, lidLink)
-                        setTimeout(function() {
-                            box.setAttribute('class', 'visible');
-                            fullFigureWrapper.setAttribute('class', 'visible');
-                        }, 300);
-                    }, 300);
+                    var activeBox = fullFigureWrapper.getAttribute('data-character');
+                    if(activeBox != character) {
+                        hideShowBox(alt, boxLink, figureLink, lidLink, character);
+                    }
                 } else {
-                    animateBox(alt, boxLink, figureLink, lidLink)
+                    animateBox(alt, boxLink, figureLink, lidLink, character)
                     setTimeout(function() {
                         box.setAttribute('class', 'visible');
                         fullFigureWrapper.setAttribute('class', 'visible');
@@ -168,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // animate box into screen
-function animateBox(alt, boxLink, figureLink, lidLink) {
+function animateBox(alt, boxLink, figureLink, lidLink, character) {
     box.setAttribute('alt', alt);
     box.setAttribute('src', boxLink);
     fullFigure.setAttribute('alt', alt);
@@ -176,6 +150,25 @@ function animateBox(alt, boxLink, figureLink, lidLink) {
     boxLid.setAttribute('alt', alt);
     boxLid.setAttribute('src', lidLink);
     boxWrapper.setAttribute('class', 'visible');
+    fullFigureWrapper.setAttribute('data-character', character);
+}
+
+function hideShowBox(alt, boxLink, figureLink, lidLink, character) {
+    setTimeout(function() {
+        fullFigureWrapper.setAttribute('class', '');
+    }, 100);
+
+    setTimeout(function() {
+        boxWrapper.setAttribute('class', '');
+    }, 300);
+
+    setTimeout(function() {
+        animateBox(alt, boxLink, figureLink, lidLink, character)
+        setTimeout(function() {
+            box.setAttribute('class', 'visible');
+            fullFigureWrapper.setAttribute('class', 'visible');
+        }, 300);
+    }, 300);
 }
 
 function resetClasses() {
