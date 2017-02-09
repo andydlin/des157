@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var imgLink = 'images/' + character + '/' + character + '-1.jpg';
         image.setAttribute('alt', alt);
         image.setAttribute('src', imgLink);
-        image.setAttribute('character', character);
+        image.setAttribute('data-character', character);
         wrapper.setAttribute('class', 'visible');
         setTimeout(function() {
             image.setAttribute('class', 'visible');
