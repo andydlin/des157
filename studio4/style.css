@@ -1,0 +1,371 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+
+@-webkit-keyframes hover {
+    0%   {margin-top: 0px;}
+    50%   {margin-top: -2px;}
+    100%  {margin-top: 0px;}
+}
+
+@-webkit-keyframes blink {
+    0%   {transform: scaleY(1);}
+    3%  {transform: scaleY(0);}
+    6%  {transform: scaleY(1);}
+    47%  {transform: scaleY(1);}
+    50%  {transform: scaleY(0);}
+    53%  {transform: scaleY(1);}
+    56%  {transform: scaleY(0);}
+    59%  {transform: scaleY(1);}
+    100%  {transform: scaleY(1);}
+}
+
+@-webkit-keyframes bounce {
+    0%   {transform: translateY(0px);}
+    50%  {transform: translateY(-5px);}
+    75%  {transform: translateY(0px);}
+}
+
+@-webkit-keyframes shadowBounce {
+    0%   {transform: translateY(0px) scaleX(1);}
+    50%  {transform: translateY(5px) scaleX(0.9);}
+    75%  {transform: translateY(0px) scaleX(1);}
+}
+
+@-webkit-keyframes leftMove {
+    0%   {transform: rotate(-45deg);}
+    50%   {transform: rotate(45deg);}
+    100%  {transform: rotate(-45deg);}
+}
+
+@-webkit-keyframes rightMove {
+    0%   {transform: rotate(45deg);}
+    50%   {transform: rotate(-45deg);}
+    100%  {transform: rotate(45deg);}
+}
+
+body {
+    font-family: 'Comfortaa', Helvetica, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.hasTip {
+    position: relative;
+}
+
+.tooltip {
+    background: #F3A358;
+    border-radius: 50px;
+    bottom: 105%;
+    color: #ffffff;
+    font-size: 12px;
+    left: 50%;
+    opacity: 0;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, 10px);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.tooltip:before {
+    border-color: #F3A358 transparent transparent transparent;
+    border-style: solid;
+    border-width: 10px;
+    content: "";
+    height: 0;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    top: 100%;
+    width: 0;
+}
+
+.hasTip.show .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0px);
+}
+
+footer a {
+    color: #cccccc;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    padding: 100px 0;
+    width: 1000px;
+}
+
+main {
+    height: 600px;
+    margin-bottom: 100px;
+    position: relative;
+    width: 1000px;
+}
+
+#timer > .hasTip {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#timer .tooltip {
+    width: 160px;
+}
+
+#countdown {
+    background: #444444;
+    color: #ffffff;
+    display: block;
+    padding: 10px 20px;
+}
+
+#screen {
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+}
+
+#character,
+.character {
+    height: 220px;
+    position: absolute;
+    width: 100px;
+}
+
+#character.offscreen {
+    left: -100px;
+}
+
+#character {
+    bottom: 50px;
+    left: 50%;
+    margin-left: -50px;
+    transition: left 4s;
+}
+
+.character > img {
+    position: absolute;
+}
+
+.hair {
+    left: -16px;
+    top: -26px;
+    z-index: 5;
+}
+
+.head-cont {
+    left: 7px;
+    position: absolute;
+    top: 40px;
+    z-index: 4;
+}
+
+.head-cont .eye {
+    -webkit-animation: blink 4.5s infinite;
+    animation: blink 4.5s infinite;
+    background-color: #333333;
+    border-radius: 50%;
+    display: block;
+    height: 14px;
+    position: absolute;
+    transition: 0.25s;
+    -moz-transition: 0.25s;
+    -webkit-transition: 0.25s;
+    width: 6px;
+}
+
+.eye.left {
+    left: 63px;
+    top: 40px;
+}
+
+.eye.right {
+    left: 50px;
+    top: 40px;
+}
+
+.leg,
+.arm.left {
+    z-index: 1;
+}
+
+.body {
+    left: 36px;
+    top: 118px;
+    z-index: 2;
+}
+
+.arm.right {
+    left: 28px;
+    top: 120px;
+    z-index: 3;
+}
+
+.arm.left {
+    left: 65px;
+    top: 118px;
+}
+
+.leg,
+.arm {
+    transform-origin: 50% 0%;
+    -webkit-transform-origin: 50% 0%;
+}
+
+.leg.left {
+    left: 58px;
+    top: 175px;
+}
+
+.leg.right {
+    left: 42px;
+    top: 170px;
+}
+
+.shadow {
+    background-color: #222222;
+    border-radius: 50%;
+    display: inline-block;
+    height: 8px;
+    left: 20px;
+    position: absolute;
+    top: 208px;
+    width: 75px;
+}
+
+.character .hover {
+    -webkit-animation: hover 1.5s infinite;
+    animation: hover 1.5s infinite;
+}
+
+#character.left {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.character.moving {
+    -webkit-animation: bounce 1s infinite;
+    animation: bounce 1s infinite;
+}
+
+.character.moving .shadow {
+    -webkit-animation: shadowBounce 1s infinite;
+    animation: shadowBounce 1s infinite;
+}
+
+.character.moving .leg.left,
+.character.moving .arm.right {
+    -webkit-animation: leftMove 1s infinite;
+    animation: leftMove 1s infinite;
+}
+
+.character.moving .leg.right,
+.character.moving .arm.left {
+    -webkit-animation: rightMove 1s infinite;
+    animation: rightMove 1s infinite;
+}
+
+#timeline {
+    bottom: 0px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+#timeline h2 {
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.timeline-cont {
+    display: inline-block;
+    position: relative;
+    width: 600px;
+}
+
+hr {
+    border: 0px;
+    border-top: 1px solid #e1e1e1;
+}
+
+.timeline-cont .point {
+    background: #e1e1e1;
+    border-radius: 50px;
+    cursor: pointer;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+    top: -5px;
+}
+
+.timeline-cont > .point:nth-child(1) {
+    left: 0;
+}
+
+.timeline-cont > .point:nth-child(2) {
+    left: 200px;
+}
+
+.timeline-cont > .point:nth-child(3) {
+    left: 400px;
+}
+
+.timeline-cont > .point:nth-child(4) {
+    left: 100%;
+}
+
+.timeline-cont .point span:not(.tooltip) {
+    color: #999999;
+    display: block;
+    font-size: 14px;
+    left: 50%;
+    margin-left: -30px;
+    position: absolute;
+    top: 18px;
+    width: 60px;
+}
+
+#tracker {
+    bottom: 8px;
+    left: 0;
+    position: absolute;
+    transition: left 0.25s;
+}
+
+#weeks {
+    height: 200px;
+    left: 0;
+    margin-top: -90px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.week {
+    background: #222222;
+    color: #ffffff;
+    font-size: 32px;
+    left: 50%;
+    margin-left: -150px;
+    padding: 83px 0px;
+    position: absolute;
+    text-align: center;
+    top: -350px;
+    transition: top 2s;
+    width: 300px;
+    z-index: 9;
+}
