@@ -47,6 +47,33 @@
     100%  {transform: rotate(45deg);}
 }
 
+@keyframes wave {
+    0% {transform: rotate(0deg);}
+    15% {transform: rotate(-85deg);}
+    30% {transform: rotate(-135deg);}
+    45% {transform: rotate(-85deg);}
+    60% {transform: rotate(-135deg);}
+    75% {transform: rotate(-85deg);}
+    90% {transform: rotate(-135deg);}
+    100% {transform: rotate(-45deg);}
+}
+
+@keyframes jump {
+    0% {transform: translateY(0px);}
+    35% {transform: translateY(-50px);}
+    50% {transform: translateY(-51px);}
+    65% {transform: translateY(-50px);}
+    100% {transform: translateY(0px);}
+}
+
+@keyframes jumpShadow {
+    0% {transform: translateY(0px) scaleX(1);}
+    35% {transform: translateY(50px) scaleX(0.9);}
+    50% {transform: translateY(50px) scaleX(0.9);}
+    65% {transform: translateY(50px) scaleX(0.9);}
+    100% {transform: translateY(0px) scaleX(1);}
+}
+
 body {
     font-family: 'Comfortaa', Helvetica, sans-serif;
 }
@@ -155,6 +182,26 @@ main {
     transition: left 4s;
 }
 
+#character.jumping {
+    -webkit-animation: jump 0.75s 1;
+    animation: jump 0.75s 1;
+}
+
+#character.jumping .arm.left,
+#character.jumping .leg.left {
+    transform: rotate(-45deg);
+}
+
+#character.jumping .arm.right,
+#character.jumping .leg.right {
+    transform: rotate(45deg);
+}
+
+#character.jumping .shadow {
+    -webkit-animation: jumpShadow 0.75s 1;
+    animation: jumpShadow 0.75s 1;
+}
+
 .character > img {
     position: absolute;
 }
@@ -221,7 +268,7 @@ main {
 .leg,
 .arm {
     transform-origin: 50% 0%;
-    -webkit-transform-origin: 50% 0%;
+    -webkit-transform-origin: 50% 18%;
 }
 
 .leg.left {
@@ -277,6 +324,11 @@ main {
 .character.moving .arm.left {
     -webkit-animation: rightMove 1s infinite;
     animation: rightMove 1s infinite;
+}
+
+.arm.wave {
+    -webkit-animation: wave 1s infinite;
+    animation: wave 1s infinite;
 }
 
 #timeline {
@@ -368,4 +420,21 @@ hr {
     transition: top 2s;
     width: 300px;
     z-index: 9;
+}
+
+#speechBubble {
+    left: 130px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 250px;
+}
+
+#controls {
+    color: #999999;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.5s;
 }

@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var day = hr * 24;
     var tipTimer;
     var inPlace = false; // indicates when character is loaded into place
+    var waving = false;
+    var jumping = false;
+    var isFacingLeft = false;
 
     showRemaining();
 
@@ -16,7 +19,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         setTimeout(function() {
             document.getElementById('week1').style.top = '-350px';
-        }, 3000);
+
+            setTimeout(function() {
+                document.getElementById('leftArm').setAttribute('class', 'arm left hover wave');
+                showSpeechBubble('Hi, just got my haircut!', 500);
+
+                setTimeout(function() {
+                    document.getElementById('leftArm').setAttribute('class', 'arm left hover');
+                }, 1000); // wait 1s before removing .wave class
+
+                setTimeout(function() {
+                    document.getElementById('controls').style.opacity = 1;
+                }, 5000);
+            }, 1000); // wait 1s before adding .wave class
+        }, 3000); // wait 3s before animating week1 back to the top
     }, 1000);
 
     for(var i = 0; i < hasTip.length; i++) {
@@ -63,6 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(function() {
                         document.getElementById('week' + index).style.top = '-350px';
                     }, 3000);
+                    if(index == 1) {
+                        showSpeechBubble('Hi, just got my haircut!', 4000);
+                    }
+                    if(index == 2) {
+                        showSpeechBubble('Hair length just right :D', 4000);
+                    }
+                    if(index == 3) {
+                        showSpeechBubble('Alright, haircut time.', 4000);
+                    }
+                    if(index == 4) {
+                        showSpeechBubble('Omg please I need a haircut :(', 4000);
+                    }
                 }, 1000);
 
                 setTimeout(function() {
@@ -90,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.addEventListener('keydown', function(e) {
         if(inPlace) {
+            // right arrow key
             if(e.keyCode == 39) {
                 e.preventDefault();
                 document.getElementsByClassName('character')[0].setAttribute('class', 'character moving');
@@ -100,15 +129,49 @@ document.addEventListener('DOMContentLoaded', function() {
                     checkPosition(left);
                 }
             }
+            // left arrow key
             if(e.keyCode == 37) {
                 e.preventDefault();
                 document.getElementsByClassName('character')[0].setAttribute('class', 'character moving');
                 document.getElementById('character').setAttribute('class', 'left');
                 var left = parseInt(document.getElementById('tracker').style.left);
+                isFacingLeft = true;
                 if(left > -4) {
                     left -= 10;
                     document.getElementById('tracker').style.left = left + 'px';
                     checkPosition(left);
+                }
+            }
+            // "w" key
+            if(e.keyCode == 87) {
+                e.preventDefault();
+                if(!waving) {
+                    waving = true;
+                    document.getElementById('leftArm').setAttribute('class', 'arm left hover wave');
+
+                    setTimeout(function() {
+                        document.getElementById('leftArm').setAttribute('class', 'arm left hover');
+                    }, 1000);
+
+                    setTimeout(function() {
+                        waving = false;
+                    }, 1250);
+                }
+            }
+            // "spacebar" key
+            if(e.keyCode == 32) {
+                e.preventDefault();
+                if(!jumping) {
+                    jumping = true;
+                    document.getElementById('character').setAttribute('class', 'jumping');
+
+                    setTimeout(function() {
+                        document.getElementById('character').setAttribute('class', '');
+                    }, 700);
+
+                    setTimeout(function() {
+                        jumping = false;
+                    }, 950);
                 }
             }
         }
@@ -117,7 +180,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keyup', function(e) {
         if(inPlace) {
             document.getElementsByClassName('character')[0].setAttribute('class', 'character');
-            document.getElementById('character').setAttribute('class', '');
+            if(isFacingLeft) {
+                document.getElementById('character').setAttribute('class', '');
+                isFacingLeft = false;
+            }
         }
     });
 
@@ -125,14 +191,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if(left == -4 || left == 196 || left == 396 || left == 596) {
             inPlace = false;
             var index = 0;
+            var text;
             if(left == -4) {
                 index = 1;
+                text = 'Hi, just got my haircut!';
             } else if(left == 196) {
                 index = 2;
+                text = 'Hair length just right :D';
             } else if(left == 396) {
                 index = 3;
+                text = 'Alright, haircut time.';
             } else if(left == 596) {
                 index = 4;
+                text = 'Omg please I need a haircut :(';
             }
             document.getElementsByClassName('character')[0].setAttribute('class', 'character');
             document.getElementById('character').setAttribute('class', '');
@@ -147,6 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('week' + index).style.top = '-350px';
                     inPlace = true;
                 }, 2000);
+
+                showSpeechBubble(text, 3000);
             }, 500);
         }
     }
@@ -172,5 +245,15 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             e.appendChild(span);
         }, 500);
+    }
+
+    function showSpeechBubble(text, delay) {
+        setTimeout(function() {
+            document.getElementById('speechBubble').innerHTML = text;
+
+            setTimeout(function() {
+                document.getElementById('speechBubble').innerHTML = '';
+            }, 2500);
+        }, delay);
     }
 });
