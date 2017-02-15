@@ -341,7 +341,7 @@ hr {
 
 #tracker {
     bottom: 8px;
-    left: 0;
+    left: -4;
     position: absolute;
     transition: left 0.25s;
 }

@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(left < 596) {
                     left += 10;
                     document.getElementById('tracker').style.left = left + 'px';
+                    checkPosition(left);
                 }
             }
             if(e.keyCode == 37) {
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(left > -4) {
                     left -= 10;
                     document.getElementById('tracker').style.left = left + 'px';
+                    checkPosition(left);
                 }
             }
         }
@@ -118,6 +120,36 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('character').setAttribute('class', '');
         }
     });
+
+    function checkPosition(left) {
+        if(left == -4 || left == 196 || left == 396 || left == 596) {
+            inPlace = false;
+            var index = 0;
+            if(left == -4) {
+                index = 1;
+            } else if(left == 196) {
+                index = 2;
+            } else if(left == 396) {
+                index = 3;
+            } else if(left == 596) {
+                index = 4;
+            }
+            document.getElementsByClassName('character')[0].setAttribute('class', 'character');
+            document.getElementById('character').setAttribute('class', '');
+            setTimeout(function() {
+                document.getElementById('week' + index).style.top = '0px';
+
+                setTimeout(function() {
+                    document.getElementsByClassName('hair')[0].setAttribute('src', 'images/hair' + index + '.png');
+                }, 1000);
+
+                setTimeout(function() {
+                    document.getElementById('week' + index).style.top = '-350px';
+                    inPlace = true;
+                }, 2000);
+            }, 500);
+        }
+    }
 
     function showRemaining() {
         var nowDate = new Date();
