@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var waving = false;
     var jumping = false;
     var isFacingLeft = false;
+    var greetings = ['Hey there!', 'Hi!', 'What\'s up?', 'How\'s it going?', 'What\'s new?', 'How\'s life?', 'Nice to meet you!', 'Yo!', 'Waddup.', 'Hello!'];
 
     showRemaining();
 
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(function() {
                 document.getElementById('leftArm').setAttribute('class', 'arm left hover wave');
-                showSpeechBubble('Hi, just got my haircut!', 500);
+                showSpeechBubble('Just got my haircut!', 500);
 
                 setTimeout(function() {
                     document.getElementById('leftArm').setAttribute('class', 'arm left hover');
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('week' + index).style.top = '-350px';
                     }, 3000);
                     if(index == 1) {
-                        showSpeechBubble('Hi, just got my haircut!', 4000);
+                        showSpeechBubble('Just got my haircut!', 4000);
                     }
                     if(index == 2) {
                         showSpeechBubble('Hair length just right :D', 4000);
@@ -149,6 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     waving = true;
                     document.getElementById('leftArm').setAttribute('class', 'arm left hover wave');
 
+                    showSpeechBubble(greetings[Math.floor(Math.random() * greetings.length)], 0, 1000);
+
                     setTimeout(function() {
                         document.getElementById('leftArm').setAttribute('class', 'arm left hover');
                     }, 1000);
@@ -194,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var text;
             if(left == -4) {
                 index = 1;
-                text = 'Hi, just got my haircut!';
+                text = 'Just got my haircut!';
             } else if(left == 196) {
                 index = 2;
                 text = 'Hair length just right :D';
@@ -247,13 +250,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }
 
-    function showSpeechBubble(text, delay) {
+    function showSpeechBubble(text, delay, delay2) {
+        var d = 2250;
+        if(delay2) {
+            d = delay2;
+        }
         setTimeout(function() {
             document.getElementById('speechBubble').innerHTML = text;
 
             setTimeout(function() {
                 document.getElementById('speechBubble').innerHTML = '';
-            }, 2500);
+            }, d);
         }, delay);
     }
 });
