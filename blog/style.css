@@ -73,6 +73,10 @@ a:hover:after {
     float: left;
 }
 
+.hidden {
+    display: none;
+}
+
 /*
 -- Begin Content --
 */
