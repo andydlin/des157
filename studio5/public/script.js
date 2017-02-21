@@ -47,23 +47,26 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
     };
 });
 
-// process giphy api
-function getGiphy(url) {
-    var xmlHttp = new XMLHttpRequest(); // new HTTP request
-    xmlHttp.onreadystatechange = function() { // detect readystate change
-        if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { // wait till readystate is 4, means the request is done
-            return processGiphy(xmlHttp.responseText); // process json when done
-        }
-    }
-    xmlHttp.open("GET", url, true); // true for async
-    xmlHttp.send(); // send http request
-}
+app.controller('AuthController', function($scope, $firebaseAuth) {
+    $scope.user = {};
+    var firebaseAuth = firebase.auth()
 
-// process giphy data
-function processGiphy(json) {
-    var objects = JSON.parse(json); // giphy api returns json string, parse into json array
-    var size = Object.keys(objects['data']).length; // get length of array of images returned
-    var index = Math.floor((Math.random() * size-1) + 1);
-    var imageLink = objects['data'][index]['images']['fixed_height']['url'];
-    return imageLink;
-}
+    $scope.login = function() {
+        var email = $scope.username;
+        var password = $scope.password;
+
+        firebaseAuth.signInWithEmailAndPassword(email, password).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if(errorCode === 'auth/user-not-found') {
+                alert('User not found.');
+            } else if(errorCode === 'auth/wrong-password') {
+                alert('Password is incorrect.');
+            } else {
+                $scope.user = { };
+            }
+            firebaseConnection.user = user;
+            $scope.$apply();
+        });
+    }
+});

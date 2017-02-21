@@ -27,6 +27,18 @@
                 <li ng-repeat="gif in gifs"><img src="{{ gif.text }}"><button ng-click="gifs.$remove(gif)">Delete</button></li>
             </ul>
         </div>
+        <!-- <div ng-controller="AuthController">
+            <form ng-submit="login()" ng-show="!user.email">
+                <input ng-model="username" placeholder="Username">
+                <input ng-model="password" placeholder="Password" type="password">
+                <button type="submit">Log In</button>
+            </form>
+            <p>{{ user.email }}</p>
+        </div> -->
+        <footer>
+            <a href="http://validator.w3.org/check?uri=referer" target="_blank">Valid HTML 5</a>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">Valid CSS</a>
+        </footer>
     </main>
 </body>
 </html>
