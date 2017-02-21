@@ -3,7 +3,7 @@
 <head>
     <title>Andy Lin - DES157: Studio 5</title>
     <link rel="icon" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
@@ -11,20 +11,22 @@
     <script src="script.js" type="text/javascript"></script>
 </head>
 <body>
-    <!-- <div ng-controller="ObjectController">
-        <h1>Firebase Single Object</h1>
-        <input type="text" ng-model="data.text"/>
-        <p>You said: {{ data.text }}</p>
-    </div> -->
-    <div ng-controller="ArrayController">
-        <h1>Firebase Array</h1>
-        <form ng-submit="addMessage()">
-            <input id="message" ng-model="newMessageText" />
-            <button type="submit">Add Message</button>
-        </form>
-        <ul>
-            <li ng-repeat="message in messages">{{ message.text }}<button ng-click="messages.$remove(message)">Delete Message</button></li>
-        </ul>
-    </div>
+    <main>
+        <!-- <div ng-controller="ObjectController">
+            <h1>Firebase Single Object</h1>
+            <input type="text" ng-model="data.text"/>
+            <p>You said: {{ data.text }}</p>
+        </div> -->
+        <div ng-controller="ArrayController">
+            <h1>Add a GIF</h1>
+            <form ng-submit="addGiphy()">
+                <input id="term" ng-model="term" />
+                <button type="submit">Add gif</button>
+            </form>
+            <ul>
+                <li ng-repeat="gif in gifs"><img src="{{ gif.text }}"><button ng-click="gifs.$remove(gif)">Delete</button></li>
+            </ul>
+        </div>
+    </main>
 </body>
 </html>

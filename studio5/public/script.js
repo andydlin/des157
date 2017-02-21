@@ -20,15 +20,50 @@ app.controller('ObjectController', function($scope, $firebaseObject) {
 
 // demonstrate firebase array
 app.controller('ArrayController', function($scope, $firebaseArray) {
-    var messages = ref.child('messages'); // get 'messages' array
-    $scope.messages = $firebaseArray(messages); // synchronized array
+    var gifs = ref.child('gifs'); // get 'messages' array
+    $scope.gifs = $firebaseArray(gifs); // synchronized array
 
-    // add message function
-    $scope.addMessage = function() {
-        var message = $scope.newMessageText;
-        $scope.messages.$add({
-            text: message
-        });
-        document.getElementById('message').value = '';
+    // add gif function
+    $scope.addGiphy = function() {
+        var term = $scope.term;
+
+        var xmlHttp = new XMLHttpRequest(); // new HTTP request
+        xmlHttp.onreadystatechange = function() { // detect readystate change
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { // wait till readystate is 4, means the request is done
+                var objects = JSON.parse(xmlHttp.responseText); // giphy api returns json string, parse into json array
+                var size = Object.keys(objects['data']).length; // get length of array of images returned
+                var index = Math.floor((Math.random() * size-1) + 1);
+                var imageLink = objects['data'][index]['images']['fixed_height']['url'];
+
+                $scope.gifs.$add({
+                    text: imageLink
+                });
+                document.getElementById('term').value = '';
+                console.log(term);
+            }
+        }
+        xmlHttp.open("GET", "http://api.giphy.com/v1/gifs/search?q=" + term + "&limit=10&api_key=dc6zaTOxFJmzC", true); // true for async
+        xmlHttp.send(); // send http request
     };
 });
+
+// process giphy api
+function getGiphy(url) {
+    var xmlHttp = new XMLHttpRequest(); // new HTTP request
+    xmlHttp.onreadystatechange = function() { // detect readystate change
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { // wait till readystate is 4, means the request is done
+            return processGiphy(xmlHttp.responseText); // process json when done
+        }
+    }
+    xmlHttp.open("GET", url, true); // true for async
+    xmlHttp.send(); // send http request
+}
+
+// process giphy data
+function processGiphy(json) {
+    var objects = JSON.parse(json); // giphy api returns json string, parse into json array
+    var size = Object.keys(objects['data']).length; // get length of array of images returned
+    var index = Math.floor((Math.random() * size-1) + 1);
+    var imageLink = objects['data'][index]['images']['fixed_height']['url'];
+    return imageLink;
+}
