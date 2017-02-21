@@ -39,7 +39,6 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
                     text: imageLink
                 });
                 document.getElementById('term').value = '';
-                console.log(term);
             }
         }
         xmlHttp.open("GET", "http://api.giphy.com/v1/gifs/search?q=" + term + "&limit=10&api_key=dc6zaTOxFJmzC", true); // true for async
