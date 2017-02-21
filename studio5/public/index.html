@@ -2,7 +2,7 @@
 <html ng-app="giphies">
 <head>
     <title>Andy Lin - DES157: Studio 5</title>
-    <link rel="icon" href="../images/favicon.png">
+    <link rel="icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
@@ -11,11 +11,14 @@
     <script src="script.js" type="text/javascript"></script>
 </head>
 <body>
-    <div id="wrapper">
-        <label>Name:</label>
-              <input type="text" ng-model="yourName" placeholder="Enter a name here">
-              <hr>
-              <h1>Hello {{yourName}}!</h1>
+    <div ng-controller="GreetingController">
+      {{ greeting }}
+    </div>
+    <div ng-controller="MessageController">
+        <!-- anything typed in here is magically saved to our Firebase database! -->
+   <input type="text" ng-model="data.text"/>
+   <!-- all changes from our Firebase database magically appear here! -->
+   <h1>You said: {{ data.text }}</h1>
     </div>
 </body>
 </html>
