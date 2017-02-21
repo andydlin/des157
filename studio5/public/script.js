@@ -12,12 +12,23 @@ var config = {
 firebase.initializeApp(config); // initialize firebase app
 var ref = firebase.database().ref(); // store reference to database
 
-// greeting controller
-app.controller('GreetingController', function($scope, $firebaseObject) {
-    $scope.greeting = 'Hello there!!';
+// demonstrate firebase object
+app.controller('ObjectController', function($scope, $firebaseObject) {
+    var syncObject = $firebaseObject(ref); // get firebase object
+    syncObject.$bindTo($scope, "data"); // synchronize javascript, DOM, and firebase database
 });
 
-app.controller('MessageController', function($scope, $firebaseObject) {
-    var syncObject = $firebaseObject(ref);
-    syncObject.$bindTo($scope, "data");
+// demonstrate firebase array
+app.controller('ArrayController', function($scope, $firebaseArray) {
+    var messages = ref.child('messages'); // get 'messages' array
+    $scope.messages = $firebaseArray(messages); // synchronized array
+
+    // add message function
+    $scope.addMessage = function() {
+        var message = $scope.newMessageText;
+        $scope.messages.$add({
+            text: message
+        });
+        document.getElementById('message').value = '';
+    };
 });

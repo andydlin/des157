@@ -11,14 +11,20 @@
     <script src="script.js" type="text/javascript"></script>
 </head>
 <body>
-    <div ng-controller="GreetingController">
-      {{ greeting }}
-    </div>
-    <div ng-controller="MessageController">
-        <!-- anything typed in here is magically saved to our Firebase database! -->
-   <input type="text" ng-model="data.text"/>
-   <!-- all changes from our Firebase database magically appear here! -->
-   <h1>You said: {{ data.text }}</h1>
+    <!-- <div ng-controller="ObjectController">
+        <h1>Firebase Single Object</h1>
+        <input type="text" ng-model="data.text"/>
+        <p>You said: {{ data.text }}</p>
+    </div> -->
+    <div ng-controller="ArrayController">
+        <h1>Firebase Array</h1>
+        <form ng-submit="addMessage()">
+            <input id="message" ng-model="newMessageText" />
+            <button type="submit">Add Message</button>
+        </form>
+        <ul>
+            <li ng-repeat="message in messages">{{ message.text }}<button ng-click="messages.$remove(message)">Delete Message</button></li>
+        </ul>
     </div>
 </body>
 </html>
