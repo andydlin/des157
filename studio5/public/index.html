@@ -32,7 +32,7 @@
                     <button type="submit">Add gif</button>
                 </form>
                 <ul>
-                    <li ng-repeat="gif in gifs | orderBy:reverse:true">{{ gif.image }}<button ng-click="gifs.$remove(gif)">Delete</button></li>
+                    <li ng-repeat="gif in gifs | orderBy:reverse:true"><img src="{{ gif.text }}"><button ng-click="gifs.$remove(gif)">Delete</button></li>
                 </ul>
             </div>
             <div class="col" ng-controller="MessagesController">
