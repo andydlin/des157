@@ -43,7 +43,7 @@
                     <button type="submit">Add Message</button>
                 </form>
                 <ul>
-                    <li ng-repeat="message in messages | orderBy:reverse:true">{{ message.text }}&nbsp;<span>({{ user.email }})</span>&nbsp;<button ng-click="messages.$remove(message)" type="button">delete</button></li>
+                    <li ng-repeat="message in messages | orderBy:reverse:true">{{ message.text }}&nbsp;<span>({{ message.user }})</span>&nbsp;<button ng-click="messages.$remove(message)" type="button">delete</button></li>
                 </ul>
             </div>
         </div>

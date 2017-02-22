@@ -20,6 +20,15 @@ app.controller('ObjectController', function($scope, $firebaseObject) {
 
 // demonstrate firebase array
 app.controller('ArrayController', function($scope, $firebaseArray) {
+    $scope.user = {};
+    firebase.auth().onAuthStateChanged(function(user) {
+        if(user) {
+            $scope.user = user;
+        } else {
+            $scope.user = {};
+        }
+    });
+
     var gifs = ref.child('gifs'); // get 'messages' array
     $scope.gifs = $firebaseArray(gifs); // synchronized array
 
@@ -36,7 +45,8 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
                 var imageLink = objects['data'][index]['images']['fixed_height']['url'];
 
                 $scope.gifs.$add({
-                    text: imageLink
+                    text: imageLink,
+                    user: $scope.user.email
                 });
                 document.getElementById('term').value = '';
             }
@@ -48,6 +58,15 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
 
 // messages
 app.controller('MessagesController', function($scope, $firebaseArray) {
+    $scope.user = {};
+    firebase.auth().onAuthStateChanged(function(user) {
+        if(user) {
+            $scope.user = user;
+        } else {
+            $scope.user = {};
+        }
+    });
+
     var messages = ref.child('messages'); // get 'messages' array
     $scope.messages = $firebaseArray(messages); // synchronized array
 
@@ -55,7 +74,8 @@ app.controller('MessagesController', function($scope, $firebaseArray) {
     $scope.addGiphy = function() {
         var term = $scope.term;
         $scope.messages.$add({
-            text: term
+            text: term,
+            user: $scope.user.email
         });
         document.getElementById('message').value = '';
     };
