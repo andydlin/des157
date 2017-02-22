@@ -18,6 +18,7 @@
             <p>You said: {{ data.text }}</p>
         </div> -->
         <form ng-submit="login()" ng-show="!user.email">
+            <p>Might take a few seconds to login. Try refreshing after like 5 seconds.</p>
             <input ng-model="username" placeholder="Email" type="text">
             <input ng-model="password" placeholder="Password" type="password">
             <button type="submit">Log In</button>
