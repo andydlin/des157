@@ -22,7 +22,7 @@ main {
 }
 
 h1 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 form {
@@ -40,4 +40,15 @@ li {
 .col {
     display: table-cell;
     width: 50%;
+}
+
+ul {
+    border: 1px solid #e1e1e1;
+    height: 600px;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.col:first-child ul {
+    margin-right: 30px;
 }
