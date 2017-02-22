@@ -34,9 +34,9 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
                 var size = Object.keys(objects['data']).length; // get length of array of images returned
                 var index = Math.floor((Math.random() * size-1) + 1);
                 var imageLink = objects['data'][index]['images']['fixed_height']['url'];
-
+                var elem = '<img src="' + imageLink + '">';
                 $scope.gifs.$add({
-                    text: imageLink
+                    image: elem
                 });
                 document.getElementById('term').value = '';
             }
