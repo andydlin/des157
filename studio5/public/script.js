@@ -46,6 +46,22 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
     };
 });
 
+// messages
+app.controller('MessagesController', function($scope, $firebaseArray) {
+    var messages = ref.child('messages'); // get 'messages' array
+    $scope.messages = $firebaseArray(messages); // synchronized array
+
+    // add gif function
+    $scope.addGiphy = function() {
+        var term = $scope.term;
+        $scope.messages.$add({
+            text: term
+        });
+        document.getElementById('message').value = '';
+    };
+});
+
+
 app.controller('AuthController', function($scope, $firebaseAuth) {
     $scope.user = {};
     firebase.auth().onAuthStateChanged(function(user) {

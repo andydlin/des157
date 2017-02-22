@@ -24,15 +24,27 @@
         </form>
         <p>{{ user.email }}</p>
         <button ng-show="user.email" ng-click="logout()">Log Out</button>
-        <div ng-controller="ArrayController" ng-show="user.email">
-            <h1>Add a GIF</h1>
-            <form ng-submit="addGiphy()">
-                <input id="term" ng-model="term" />
-                <button type="submit">Add gif</button>
-            </form>
-            <ul>
-                <li ng-repeat="gif in gifs | orderBy:reverse:true"><img src="{{ gif.text }}"><button ng-click="gifs.$remove(gif)">Delete</button></li>
-            </ul>
+        <div class="row" ng-show="user.email">
+            <div class="col" ng-controller="ArrayController">
+                <h1>Add GIF</h1>
+                <form ng-submit="addGiphy()">
+                    <input id="term" ng-model="term" />
+                    <button type="submit">Add gif</button>
+                </form>
+                <ul>
+                    <li ng-repeat="gif in gifs | orderBy:reverse:true"><img src="{{ gif.text }}"><button ng-click="gifs.$remove(gif)">Delete</button></li>
+                </ul>
+            </div>
+            <div class="col" ng-controller="MessagesController">
+                <h1>Add Message</h1>
+                <form ng-submit="addGiphy()">
+                    <input id="message" ng-model="term" />
+                    <button type="submit">Add Message</button>
+                </form>
+                <ul>
+                    <li ng-repeat="message in messages | orderBy:reverse:true">{{ message.text }}<button ng-click="messages.$remove(message)">Delete</button></li>
+                </ul>
+            </div>
         </div>
         <footer>
             <a href="http://validator.w3.org/check?uri=referer" target="_blank">Valid HTML 5</a>

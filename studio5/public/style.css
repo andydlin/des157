@@ -32,3 +32,12 @@ form {
 li {
     margin-bottom: 15px;
 }
+
+.row {
+    display: table;
+}
+
+.col {
+    display: table-cell;
+    width: 50%;
+}
