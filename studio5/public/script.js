@@ -48,6 +48,14 @@ app.controller('ArrayController', function($scope, $firebaseArray) {
 
 app.controller('AuthController', function($scope, $firebaseAuth) {
     $scope.user = {};
+    firebase.auth().onAuthStateChanged(function(user) {
+        if(user) {
+            $scope.user = user;
+            console.log(user.email);
+        } else {
+            $scope.user = {};
+        }
+    });
     var firebaseAuth = firebase.auth()
 
     $scope.login = function() {
@@ -58,14 +66,19 @@ app.controller('AuthController', function($scope, $firebaseAuth) {
             var errorCode = error.code;
             var errorMessage = error.message;
             if(errorCode === 'auth/user-not-found') {
-                alert('User not found.');
+                console.log('User not found.');
+                firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                });
             } else if(errorCode === 'auth/wrong-password') {
                 alert('Password is incorrect.');
-            } else {
-                $scope.user = { };
             }
-            firebaseConnection.user = user;
             $scope.$apply();
         });
+    }
+
+    $scope.logout = function() {
+        firebaseAuth.signOut();
     }
 });
