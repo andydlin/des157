@@ -18,6 +18,7 @@
             <p>You said: {{ data.text }}</p>
         </div> -->
         <form ng-submit="login()" ng-show="!user.email">
+            <p>Password needs to be longer than 6 characters.</p>
             <p>Might take a few seconds to login. Try refreshing after like 5 seconds.</p>
             <input ng-model="username" placeholder="Email" type="text">
             <input ng-model="password" placeholder="Password" type="password">
@@ -33,7 +34,7 @@
                     <button type="submit">Add gif</button>
                 </form>
                 <ul>
-                    <li ng-repeat="gif in gifs | orderBy:reverse:true"><img src="{{ gif.text }}"><button ng-click="gifs.$remove(gif)">Delete</button></li>
+                    <li ng-repeat="gif in gifs | orderBy:reverse:true"><img src="{{ gif.text }}">&nbsp;<span>({{ gif.user }})</span>&nbsp;<button ng-click="gifs.$remove(gif)">Delete</button></li>
                 </ul>
             </div>
             <div class="col" ng-controller="MessagesController">
