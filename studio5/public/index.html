@@ -12,11 +12,6 @@
 </head>
 <body>
     <main ng-controller="AuthController">
-        <!-- <div ng-controller="ObjectController">
-            <h1>Firebase Single Object</h1>
-            <input type="text" ng-model="data.text"/>
-            <p>You said: {{ data.text }}</p>
-        </div> -->
         <form ng-submit="login()" ng-show="!user.email">
             <p>Password needs to be longer than 6 characters.</p>
             <p>Might take a few seconds to login. Try refreshing after like 5 seconds.</p>
