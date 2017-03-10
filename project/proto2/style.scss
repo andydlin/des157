@@ -3,6 +3,15 @@
     margin: 0;
     outline: none;
     padding: 0;
+
+
+    &:active,
+    &:focus {
+        cursor: pointer !important;
+        cursor: grab !important;
+        cursor: -webkit-grab !important;
+        cursor: -moz-grab !important;
+    }
 }
 
 html,
@@ -17,8 +26,31 @@ body {
     font-size: 16px;
 }
 
-#image {
-    left: 0;
+.box {
+    cursor: pointer;
+    left: 50%;
     position: absolute;
-    top: 0;
+    text-align: center;
+    top: 50%;
+    transition: left 1s, top 1s, opacity 0.5s;
+    transform: translateX(-50%);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    &:nth-child(2) {
+        left: 40%;
+    }
+
+    &:nth-child(3) {
+        left: 60%;
+    }
+
+    &:nth-child(4) {
+        top: 40%;
+    }
+
+    &:nth-child(5) {
+        top: 60%;
+    }
 }
