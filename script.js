@@ -107,7 +107,7 @@ function updateMenu() {
 // check if cursor is on circle
 function onCircle() {
     var d = dist(mouseX, mouseY, circleX, circleY); // calculate distance between the cursor and circle
-    if(d < (circleDiameter / 2)) { // if click is inside  circle, update circle and score
+    if(d < (circleDiameter / 2)) { // if click is inside circle, update circle and score
         return true;
     } else {
         return false;

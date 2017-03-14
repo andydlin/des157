@@ -51,10 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 var newX = elemX + distX;
                 var newY = elemY + distY;
-                console.log(elemX + ' | ' + distX + ' | ' + newX);
-                console.log(elemY + ' | ' + distY + ' | ' + newY);
                 elem.style.left = newX + 'px';
                 elem.style.top = newY + 'px';
+                elem.innerHTML = 'TOSS ME FURTHER';
             }
             isElem = false;
         }
