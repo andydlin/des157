@@ -106,13 +106,22 @@ main {
 #lobby main {
   left: 50%;
   margin: 0;
+  max-width: 1000px;
   position: absolute;
   text-align: center;
   top: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  width: 100%; }
 #lobby #chosenCharacter img {
+  display: inline-block;
   height: auto;
-  width: 300px; }
+  width: 300px;
+  vertical-align: middle; }
+#lobby .description {
+  display: inline-block;
+  text-align: left;
+  width: 500px;
+  vertical-align: middle; }
 #lobby #mainActions {
   margin-top: 30px; }
   #lobby #mainActions .btn {
