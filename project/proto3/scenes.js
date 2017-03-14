@@ -181,5 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
         function pythagorean(a, b) {
             return Math.sqrt(Math.pow(a, 2) + Math.pow(b,2));
         }
+    } // if scene 5
+
+    if(document.body.id == 'scene-6') {
+        setTimeout(function() {
+            document.getElementsByClassName('prototype-message')[0].style.opacity = '1';
+        }, 1500);
     }
 });

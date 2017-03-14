@@ -271,3 +271,26 @@ main {
 
 #scene6 {
   background-image: url("images/scenes-07.jpg"); }
+  #scene6 .prototype-message {
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.5s;
+    width: 100%;
+    z-index: 3; }
+    #scene6 .prototype-message .message {
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      display: inline-block;
+      left: 50%;
+      padding: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+      #scene6 .prototype-message .message p {
+        margin-bottom: 15px; }
