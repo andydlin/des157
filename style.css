@@ -196,3 +196,22 @@ footer a:last-child {
     height: 1px;
     margin: 30px 0px;
 }
+
+#audienceTest h1 {
+    margin-bottom: 10px;
+}
+
+#audienceTest label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#audienceTest ol {
+    padding-left: 20px;
+}
+
+#audienceTest li {
+    display: list-item;
+    list-style: decimal;
+}
