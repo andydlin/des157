@@ -9,16 +9,42 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // global variables within this scope
-    var mouseX, mouseY, elemX, elemY, elemTotal = 0;
+    var mouseX, mouseY, elemX, elemY, elemTotal, currElem = 0;
     var elem;
+    var elems = [];
     var isElem = false;
+    var delay = 500;
+    var removed = 0;
 
-    elemTotal = document.getElementsByClassName('box').length;
+    elems = document.getElementsByClassName('box');
+    elemTotal = elems.length;
+
+    setTimeout(function() {
+        showBoxes();
+    }, 5000);
+
+    function showBoxes() {
+        var x = Math.random() * (1000);
+        var y = Math.random() * (800);
+        elems[currElem].style.opacity = 1;
+        elems[currElem].style.left = x + 'px';
+        elems[currElem].style.top = y + 'px';
+        elems[currElem].setAttribute('class', 'box active');
+        currElem++;
+        setTimeout(function() {
+            if(currElem < elemTotal) {
+                showBoxes();
+                if(currElem == (elemTotal / 2)) {
+                    delay = 250;
+                }
+            }
+        }, delay);
+    }
 
     // mousedown on the page
     document.body.addEventListener('mousedown', function(event) {
         elem = event.target; // detect targeted element
-        if(elem.className == 'box') {
+        if(elem.className == 'box active') {
             isElem = true; // set is correct element to true
             var rect = event.target.getBoundingClientRect(); // get element size and position relative to viewport
 

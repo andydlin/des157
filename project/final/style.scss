@@ -1,0 +1,417 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    color: #333333;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    min-width: 1000px;
+}
+
+main {
+    margin: 5%;
+    position: relative;
+
+    h1 {
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 50px;
+        max-width: 500px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.clear:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.btn {
+    background: #cccccc;
+    border: 1px solid #999999;
+    color: #666666;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    padding: 8px 35px;
+    text-decoration: none;
+}
+
+#backButton {
+    display: block;
+    margin-top: 30px;
+}
+
+#home {
+    main {
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    h1 {
+        font-size: 72px;
+        font-weight: 400;
+    }
+
+    #mainActions {
+        margin: 30px 0px 50px 0px;
+    }
+
+    #footerLinks a {
+        display: inline-block;
+        font-size: 14px;
+        margin: 0 8px;
+    }
+
+    .prototype-message {
+        background-color: #f5f5f5;
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+
+        .message {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            display: inline-block;
+            left: 50%;
+            padding: 30px;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            p {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+#characters {
+    #charactersList {
+        max-width: 80%;
+    }
+
+    article {
+        display: inline-block;
+        float: left;
+        padding-right: 25px;
+        width: 25%;
+
+        img {
+            height: auto;
+            max-width: 100%;
+            -webkit-transition: transform 0.5s;
+            transition: transform 0.35s;
+            width: auto;
+        }
+
+        &#character1:hover {
+            img {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+#lobby {
+    main {
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #chosenCharacter img {
+        height: auto;
+        width: 300px;
+    }
+
+    #mainActions {
+        margin-top: 30px;
+
+        .btn {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.scenes {
+    opacity: 0;
+    transition: opacity 1s;
+
+    section {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: none;
+        background-size: cover;
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .dialogue {
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 50px;
+        width: 100%;
+        z-index: 3;
+
+        .content {
+            display: inline-block;
+            max-width: 800px;
+
+            p {
+                font-size: 24px;
+            }
+
+            .actions {
+                margin-top: 30px;
+            }
+        }
+
+        #dialogue-message {
+            background: rgba(255,255,255,0.8);
+            border: 2px solid #351f12;
+            border-radius: 5px;
+            color: #444444;
+            padding: 10px 20px;
+        }
+    }
+} // end #scenes
+
+#scene1 {
+    background-image: url('images/scenes-01.jpg');
+}
+
+#scene2 {
+    background-image: url('images/scenes-02.jpg');
+}
+
+#scene3 {
+    background-image: url('images/scenes-03.jpg');
+
+    .content {
+        color: #222222;
+    }
+}
+
+#scene4 {
+    background-image: url('images/scenes-04.jpg');
+
+    .content {
+        color: #222222;
+    }
+
+    #bus,
+    #walk {
+        background: rgba(0,0,0,0.25);
+        bottom: 0;
+        cursor: pointer;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.25s;
+        width: 50%;
+        z-index: 2;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        h3 {
+            color: #ffffff;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    #bus h3 .btn {
+        display: none;
+    }
+
+    #walk {
+        left: auto;
+        right: 0;
+    }
+}
+
+#scene5 {
+    background-image: url('images/scenes-06.jpg');
+
+    .dialogue {
+        transition: opacity 1s;
+
+        #actions {
+            display: none;
+        }
+    }
+}
+
+#scene-5 #game {
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 1s;
+    z-index: 3;
+
+    #instructions {
+        color: #ffffff;
+        position: absolute;
+        top: 30px;
+        text-align: center;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .progress-bar {
+        background: #000000;
+        height: 20px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+
+        #bar {
+            background: #ffa200;
+            height: 20px;
+            width: 100%;
+        }
+    }
+
+    .game-bg,
+    #scaryfillas {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .game-bg {
+        background-color: rgba(0,0,0,0.35);
+    }
+
+    #scaryfillas {
+        background-image: url('images/scaryFillas1.png');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: none;
+        background-size: cover;
+        z-index: 2;
+    }
+
+    .game-content {
+        color: #ffffff;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+    }
+
+    * {
+        &:active,
+        &:focus {
+            cursor: pointer !important;
+            cursor: grab !important;
+            cursor: -webkit-grab !important;
+            cursor: -moz-grab !important;
+        }
+    }
+
+    .box {
+        cursor: pointer;
+        font-size: 36px;
+        opacity: 0;
+        padding: 10px 15px;
+        position: absolute;
+        text-align: center;
+        transition: left 1s, top 1s, opacity 0.5s, transform 3s;
+        transform: scale(0);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+
+        &.active {
+            transform: scale(1);
+        }
+    }
+}
+
+#scene6 {
+    background-image: url('images/scenes-07.jpg');
+
+    .prototype-message {
+        background-color: rgba(0,0,0,0.5);
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: opacity 0.5s;
+        width: 100%;
+        z-index: 3;
+
+        .message {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            display: inline-block;
+            left: 50%;
+            padding: 30px;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            p {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
