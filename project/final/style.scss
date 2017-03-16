@@ -46,14 +46,26 @@ main {
 }
 
 .btn {
-    background: #cccccc;
-    border: 1px solid #999999;
-    color: #666666;
+    background: #30091E;
+    border: 1px solid darken(#30091E, 5%);
+    border-radius: 50px;
+    color: #ffffff;
     cursor: pointer;
     display: inline-block;
-    font-weight: 600;
-    padding: 8px 35px;
+    font-weight: 400;
+    padding: 10px 35px;
     text-decoration: none;
+    transition: box-shadow 0.25s, transform 0.25s;
+
+    &:hover {
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+        transform: scale(1.05);
+    }
+
+    &:active {
+        box-shadow: 0px 2px 3px rgba(0,0,0,0.5);
+        transform: scale(1);
+    }
 }
 
 #backButton {
@@ -201,6 +213,10 @@ main {
 
             .actions {
                 margin-top: 30px;
+
+                .btn {
+                    margin: 0 8px;
+                }
             }
         }
 
@@ -266,6 +282,10 @@ main {
         }
     }
 
+    #bus.active {
+        opacity: 1;
+    }
+
     #bus h3 .btn {
         display: none;
     }
@@ -295,11 +315,16 @@ main {
     z-index: 3;
 
     #instructions {
+        background: rgba(0,0,0,0.85);
         color: #ffffff;
+        font-size: 32px;
+        font-weight: bold;
+        left: 50%;
+        padding: 50px 100px;;
         position: absolute;
-        top: 30px;
+        top: 50%;
+        transform: translate(-50%, -50%);
         text-align: center;
-        width: 100%;
         z-index: 2;
     }
 

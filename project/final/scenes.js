@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if(v == 1) {
                 message = 'Just relax, you don\'t have to talk to anyone, plus you\'ll get there faster. It\'s just a pasta run, don\'t make this a day long endeavor.';
                 document.getElementById('busBtn').style.display = "inline-block";
-                this.setAttribute('data-value', 2);
+                this.setAttribute('class', 'active');
             }
             document.getElementById('dialogue-message').innerHTML = message;
         });
@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(document.body.id == 'scene-5') {
         var audio = new Audio('heart-beat.wav');
+        audio.currentTime = 30;
 
         // preload images for all the characters
         window.addEventListener('load', function() {
@@ -65,8 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             document.getElementsByClassName('dialogue')[0].style.opacity = '0';
             document.getElementById('game').style.opacity = '1';
-            audio.play(0, 20, 0);
+            audio.play();
         }, 3000);
+
+        setTimeout(function() {
+            document.getElementById('instructions').style.display = 'none';
+        }, 6000);
 
         // global variables within this scope
         var mouseX, mouseY, elemX, elemY, elemTotal, currElem = 0;
@@ -123,11 +128,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(function() {
                         document.getElementById('game').style.display = "none";
                     }, 1000);
+                    audio.pause();
                 }
                 if(width < 0) {
                     if(removed == elemTotal) {
                         clearInterval(interv);
-                        audio.stop();
+                        audio.pause();
                     }
                 } else {
                     width = width - 5;

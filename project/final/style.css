@@ -36,14 +36,22 @@ main {
   visibility: hidden; }
 
 .btn {
-  background: #cccccc;
-  border: 1px solid #999999;
-  color: #666666;
+  background: #30091E;
+  border: 1px solid #1b0511;
+  border-radius: 50px;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-weight: 600;
-  padding: 8px 35px;
-  text-decoration: none; }
+  font-weight: 400;
+  padding: 10px 35px;
+  text-decoration: none;
+  transition: box-shadow 0.25s, transform 0.25s; }
+  .btn:hover {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05); }
+  .btn:active {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    transform: scale(1); }
 
 #backButton {
   display: block;
@@ -147,6 +155,8 @@ main {
         font-size: 24px; }
       .scenes .dialogue .content .actions {
         margin-top: 30px; }
+        .scenes .dialogue .content .actions .btn {
+          margin: 0 8px; }
     .scenes .dialogue #dialogue-message {
       background: rgba(255, 255, 255, 0.8);
       border: 2px solid #351f12;
@@ -194,6 +204,8 @@ main {
       position: absolute;
       text-align: center;
       width: 100%; }
+  #scene4 #bus.active {
+    opacity: 1; }
   #scene4 #bus h3 .btn {
     display: none; }
   #scene4 #walk {
@@ -213,11 +225,16 @@ main {
   transition: opacity 1s;
   z-index: 3; }
   #scene-5 #game #instructions {
+    background: rgba(0, 0, 0, 0.85);
     color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    left: 50%;
+    padding: 50px 100px;
     position: absolute;
-    top: 30px;
+    top: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
     z-index: 2; }
   #scene-5 #game .progress-bar {
     background: #000000;
