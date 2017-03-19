@@ -68,6 +68,16 @@ main {
     }
 }
 
+.validation {
+    bottom: 0;
+    font-size: 12px;
+    padding: 8px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+}
+
 #backButton {
     display: block;
     margin-top: 30px;
